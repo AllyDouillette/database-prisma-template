@@ -10,3 +10,15 @@ datasource db {
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
+
+model Cohort {
+  id  Int   @id @default(autoincrement())
+  name  String
+  teachers  Teacher[]
+}
+
+model Teacher {
+  id    Int   @id @default(autoincrement())
+  name String
+  cohorts Cohort[]
+}
